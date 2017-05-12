@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 /**
  * Created by sit0 on 11.05.17.
@@ -13,8 +14,9 @@ public class ReadWrite {
  //   final static String OUTPUT_FILE_NAME = "C:\\Temp\\output.txt";
 //    final static Charset ENCODING = StandardCharsets.UTF_8;
 
-    static String[] myStringList;
-    static int c = 0;
+    ArrayList<String> myStringList = new ArrayList<>();
+
+
 
 
 
@@ -25,22 +27,27 @@ public class ReadWrite {
         FileReader fileReader = new FileReader(FILE_NAME);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        String textLine = bufferedReader.readLine();
+        String textLine;
         do {
-            log(textLine);
             textLine = bufferedReader.readLine();
+            myStringList.add(textLine);
+
+            // log(textLine);
 
         } while(textLine != null);
 
         bufferedReader.close();
     }
 
-    public static void toList(String line){
 
 
+    public String listOut(int line){
+        return myStringList.get(line);
     }
 
-
+    public int listSize(){
+        return myStringList.size();
+    }
 
 
     private static void log(String msg){
